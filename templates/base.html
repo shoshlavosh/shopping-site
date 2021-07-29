@@ -1,5 +1,6 @@
 <html>
 <head>
+    <!-- CSS FILES -->
     <link rel="stylesheet"
           href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.css"/>
     <link rel="stylesheet" href="/static/css/site.css"/>
@@ -11,6 +12,7 @@
     <div class="container">
 
         <div class="navbar-header">
+            <!-- IMAGE -->
             <img src="/static/img/ubermelon-logo.png">
             <a class="navbar-brand" href="/">Ubermelon</a>
         </div>
@@ -19,6 +21,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a href="/cart">
+                        <!-- IMAGE -->
                         <img class="melon-cart"
                              src="/static/img/watermelon.png">
                         My Melon Cart
@@ -40,7 +43,7 @@
       {% endfor %}
   {% endwith %}
 
-  <!-- This is where the main content goes. -->
+  <!-- This is where the main content goes. (Other template info gets/inherits put into this section) -->
   {% block body %}
       BODY OF PAGE GOES HERE VIA INHERITANCE
   {% endblock %}

@@ -6,7 +6,7 @@ melon by id.
 It reads melon data in from a text file.
 """
 
-
+# Defines a Melon class with all the attributes
 class Melon(object):
     """An Ubermelon Melon type."""
 
@@ -27,25 +27,28 @@ class Melon(object):
         self.color = color
         self.seedless = seedless
 
+    # Melon class method that returns a price string formatted with decimals - $2.00
     def price_str(self):
         """Return price formatted as string $x.xx"""
 
         return "${:.2f}".format(self.price)
 
+    # ID information about a melon object (we haven't learned this yet)
     def __repr__(self):
         """Convenience method to show information about melon in console."""
 
         return "<Melon: {}, {}, {}>".format(self.melon_id, self.common_name, self.price_str())
 
-
+# Function that reads melon information from melons.txt
 def read_melon_types_from_file(filepath):
     """Read melon type data and populate dictionary of melon types.
 
     Dictionary will be {id: Melon object}
     """
-
+    # Creates a melon_types dictionary
     melon_types = {}
 
+    # Opens file, loops through each line, splits up info and assigns variables to each chunk of info (its a list)
     with open(filepath) as file:
         for line in file:
             (melon_id,
@@ -55,12 +58,14 @@ def read_melon_types_from_file(filepath):
              img_url,
              color,
              seedless) = line.strip().split("|")
-    
+
+            # converts price into a float type
             price = float(price)
     
             # For seedless, we want to turn "1" => True, otherwise False
             seedless = (seedless == "1")
     
+            # Adds Melon object to melon_types dictionary key = [melon_id], value = Melon object
             melon_types[melon_id] = Melon(melon_id,
                                           melon_type,
                                           common_name,
@@ -71,7 +76,7 @@ def read_melon_types_from_file(filepath):
 
     return melon_types
 
-
+# Function that gets a list of Melon objects from the melon_types dictionary above 
 def get_all():
     """Return list of melons.
 
@@ -86,7 +91,7 @@ def get_all():
 
     return list(melon_types.values())
 
-
+# Function that takes in a melon_id and returns melon object information
 def get_by_id(melon_id):
     """Return a melon, given its ID."""
 
@@ -99,4 +104,5 @@ def get_by_id(melon_id):
 #
 # Format is {id: Melon object, ... }
 
+# Calls read_melon_types_from_file function and adds melons.txt as arguement passed in
 melon_types = read_melon_types_from_file("melons.txt")

@@ -8,9 +8,9 @@ Authors: Joel Burton, Christian Fernandez, Meggie Mahnken, Katie Byers.
 
 from flask import Flask, render_template, redirect, flash
 import jinja2
-
+# Importing the melons.py information here
 import melons
-
+# Instantiating a Flask app object
 app = Flask(__name__)
 
 # A secret key is needed to use Flask sessioning features
@@ -26,14 +26,14 @@ app.jinja_env.undefined = jinja2.StrictUndefined
 # more useful (you should remove this line in production though)
 app.config['PRESERVE_CONTEXT_ON_EXCEPTION'] = True
 
-
+# Homepage
 @app.route("/")
 def index():
     """Return homepage."""
 
     return render_template("homepage.html")
 
-
+# Returns Melon objects info and displays on all_melons.html
 @app.route("/melons")
 def list_melons():
     """Return page showing all the melons ubermelon has to offer"""
@@ -42,7 +42,7 @@ def list_melons():
     return render_template("all_melons.html",
                            melon_list=melon_list)
 
-
+# Returns melon details by using get_by_id and displays on melon_details.html
 @app.route("/melon/<melon_id>")
 def show_melon(melon_id):
     """Return page showing the details of a given melon.

@@ -4,16 +4,21 @@
     <h2>Top Selling Melons</h2>
 
     <div id="melon-list" class="row">
+    
+
+        <!-- For melon in melonlist, show name with a hyper link to melon details, picture and price-->
       {% for melon in melon_list %}
           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 melon-summary">
 
               <div class="well">
                   <h3><a href="/melon/{{ melon.melon_id }}">{{ melon.common_name }}</a></h3>
                   <a href="/melon/{{ melon.melon_id }}">
+                    <!-- MELON IMAGE -->
                       <img src="{{ melon.image_url }}" class="img-circle">
                   </a>
 
                   <div class="price">{{ melon.price_str() }}</div>
+                  <!-- Displays button that links to melon name/melon id (details) -->
                   <a class="btn btn-primary" href="/melon/{{ melon.melon_id }}">Details</a>
               </div>
 
