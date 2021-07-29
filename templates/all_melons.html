@@ -11,14 +11,21 @@
           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 melon-summary">
 
               <div class="well">
+                
+                  <!-- melon_id and common_name come from melon_types dictionary-->
+                  <!-- link is @app.route("/melon/<melon_id>") -->
                   <h3><a href="/melon/{{ melon.melon_id }}">{{ melon.common_name }}</a></h3>
+                  
+                  <!-- Melon Image links to melon_id details -->
                   <a href="/melon/{{ melon.melon_id }}">
-                    <!-- MELON IMAGE -->
+                    <!-- MELON IMAGE url Melon object info from melon_types dictionary -->
                       <img src="{{ melon.image_url }}" class="img-circle">
                   </a>
 
                   <div class="price">{{ melon.price_str() }}</div>
+
                   <!-- Displays button that links to melon name/melon id (details) -->
+                  <!-- Melon button links to melon_id details -->
                   <a class="btn btn-primary" href="/melon/{{ melon.melon_id }}">Details</a>
               </div>
 

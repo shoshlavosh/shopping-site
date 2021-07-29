@@ -3,12 +3,13 @@
 {% block body %}
 
     <!-- Displays full melon name -->
+    <!-- Common name from melon_types dict -->
     <h2>{{ display_melon.common_name }}</h2>
 
     <div class="row">
         <!-- link on melon image displayed -->
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            <!-- MELON IMAGE -->
+            <!-- MELON IMAGE getting frome melon_types dictionary -->
             <img src="{{ display_melon.image_url }}" class="img-responsive">
         </div>
 
@@ -16,9 +17,11 @@
         <div class="col-xs-8 col-sm-6 col-md-4 col-lg-3">
             <div class="well">
                 <h3>Price per melon</h3>
+                <!-- price_str() is a method of the Melon class -->
                 <p> {{ display_melon.price_str() }} </p>
                 
                 <!-- Button with a link to add a melon by melon ID to the cart-->
+                <!-- melon_id from our melon_types dictionary -->
                 <a class="btn btn-primary" href="/add_to_cart/{{ display_melon.melon_id }}">
                     Add to Cart
                 </a>
@@ -32,6 +35,7 @@
         <!-- Displays melon details: melon type, color, if its seedless it will display seedless -->
         <!-- If has seeds it willl display a warning: this melon has seeds -->
         <ul>
+            <!-- melon_type, color, seedless from melon_types dictionary -->
             <li>Melon type: {{ display_melon.melon_type }}</li>
             <li>Color: {{ display_melon.color }}</li>
             {% if display_melon.seedless %}
